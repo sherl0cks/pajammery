@@ -12,5 +12,4 @@ COPY /src /src
 # Install app dependencies
 RUN cd /src; npm install
 
-EXPOSE  8080
-CMD ["node", "/src/app.js"]
+CMD ["node", "/src/app.js", "80"]

@@ -1,13 +1,11 @@
 var express = require('express');
 
 // Constants
- var PORT = 80;
+ var PORT = process.argv[2];
 
 // App
  var app = express();
- app.get('/', function (req, res) {
-   res.send('Hello world\n');
- });
+ app.use(express.static(__dirname + "/public"));
 
  app.listen(PORT);
  console.log('Running on http://localhost:' + PORT);

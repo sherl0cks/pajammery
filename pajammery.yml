@@ -1,0 +1,15 @@
+---
+# This playbook manages our digit ocean server to run the stack
+
+- hosts: pajammery
+  remote_user: root
+
+  tasks:
+    - name: update yum packages
+      shell: yum update
+
+    - name: install docker
+      yum: pkg=docker state=present
+
+    - name: start docker
+      service: name=docker state=started

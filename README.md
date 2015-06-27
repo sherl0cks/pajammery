@@ -4,7 +4,7 @@
 1. http://scripteden.com/download/clean-one-page-personal-portfolio-template/ 
 2. http://eveboo.com/wp-content/uploads/2013/05/Strawberry-Jam-Wallpaper-HD-Widescreen.jpeg 
 3. http://images.counselheal.com/data/images/full/4262/pajamas-woman-bed-sleep.jpg?w=600
-4. 
+4. http://www.okjazz.org/images/artists/Depot%20Jams.jpg 
 
 ## Wanna hack?
 

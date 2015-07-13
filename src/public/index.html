@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
 
-	<title>Pajammery - Bad Ass Pajamas and Jams</title>
-	
-	<!-- icon -->
-	<link rel="icon" type="image/png" href="assets/images/favicon-32x32.png" sizes="32x32" />
-	<link rel="icon" type="image/png" href="assets/images/favicon-16x16.png" sizes="16x16" />
-	
-	<!-- CSS -->
-	<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="assets/css/font-awesome.min.css" rel="stylesheet" media="screen">
-	<link href="assets/css/simple-line-icons.css" rel="stylesheet" media="screen">
-	<link href="assets/css/animate.css" rel="stylesheet">
-	
-	<!-- Custom styles CSS -->
-	<link href="assets/css/style.css" rel="stylesheet" media="screen">
+<title>Pajammery - Bad Ass Pajamas and Jams</title>
 
-    <script src="assets/js/modernizr.custom.js"></script>
+<!-- icon -->
+<link rel="icon" type="image/png" href="https://googledrive.com/host/0B2MVPEYb3KUxZUdSTnYwMkVka0k" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://googledrive.com/host/0B2MVPEYb3KUxVXdaTm43S1FFOFU" sizes="16x16" />
+
+<!-- CSS -->
+<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="assets/css/font-awesome.min.css" rel="stylesheet" media="screen">
+<link href="assets/css/simple-line-icons.css" rel="stylesheet" media="screen">
+<link href="assets/css/animate.css" rel="stylesheet">
+
+<!-- Custom styles CSS -->
+<link href="assets/css/style.css" rel="stylesheet" media="screen">
+
+<script src="assets/js/modernizr.custom.js"></script>
 
 </head>
-<body>
+<body ng-app="PajammeryApp">
 
 	<!-- Preloader -->
 
@@ -32,27 +32,134 @@
 		<div id="status"></div>
 	</div>
 
+	<!-- Navigation start -->
+
+	<header class="header">
+
+		<nav class="navbar navbar-custom" role="navigation">
+
+			<div class="container">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">The Pajammery</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="custom-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#home">Home</a></li>
+						<li><a href="#products">Products</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</div>
+
+			</div>
+			<!-- .container -->
+
+		</nav>
+
+	</header>
+
+	<!-- Navigation end -->
+
 	<!-- Home start -->
 
-	<section id="home" class="pfblock-image screen-height">
+	<section id="home" class="pfblock pfblock-gray">
 
-	  <div class="home-overlay"></div>
+		<div id="carousel" class="carousel slide" data-ride="carousel" ng-controller="CarouselController">
 
-		<div class="intro">
-			<div class="start">Hello, we are the Pajammery and we make</div>
-			<h1>bad ass pajamas and jams.</h1>
-			<div class="start">We're under construction - come back soon!</div>
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel" ng-repeat="feature in features" data-slide-to="{{ $index }}" ng-class="{active : $index == 0}"></li>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<div ng-class="{ item: true, active : $index == 0 }" ng-repeat="feature in features">
+					<img class="img-responsive center-block" ng-src="{{ feature.imageUrl }}" alt="{{ feature.imageText }}" style="width: 1123px;">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>{{ feature.heading }}</h1>
+							<p>{{ feature.caption }}</p>
+							<p>
+								<a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a class="left carousel-control" href="#carousel" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+			</a> <a class="right carousel-control" href="#carousel" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span>
+			</a>
 		</div>
+		<!-- /.carousel -->
 
 	</section>
 
 	<!-- Home end -->
 
 
-    <!-- Scroll to top end-->
+	<!-- Products start -->
+
+	<section id="products" class="pfblock" ng-controller="ProductsController">
+		<div class="container">
+			<div class="pfblock-header wow fadeInUp">
+				<h2 class="pfblock-title">We sell sweet stuff</h2>
+				<div class="pfblock-line"></div>
+				<div class="pfblock-subtitle">Take a look at how sweet it is</div>
+			</div>
+
+			<div class="row" ng-repeat="product in products" ng-if="$index % 3 == 0">
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<div class="grid wow zoomIn">
+						<figure class="effect-bubba">
+							<img class="img-responsive" ng-src="https://www.googledrive.com/host/{{ products[$index].id }}" alt="img01" />
+							<figcaption>
+								<h2>
+									Dude <span>Pants</span>
+								</h2>
+								<p>Super soft</p>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<div class="grid wow zoomIn">
+						<figure class="effect-bubba">
+							<img class="img-responsive" ng-src="https://www.googledrive.com/host/{{ products[$index + 1].id }}" alt="img01" />
+							<figcaption>
+								<h2>
+									Woman <span>Stuff</span>
+								</h2>
+								<p>Really pretty</p>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<div class="grid wow zoomIn">
+						<figure class="effect-bubba">
+							<img class="img-responsive" ng-src="https://www.googledrive.com/host/{{ products[$index + 2].id }}" alt="img01" />
+							<figcaption>
+								<h2>
+									Not <span>Sure</span>
+								</h2>
+								<p>It's awesome</p>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- .contaier -->
+	</section>
+
+	<!-- Products end -->
+
+
+	<!-- Scroll to top end-->
 
 	<!-- Javascript files -->
-
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/js/jquery.parallax-1.1.3.js"></script>
@@ -60,10 +167,16 @@
 	<script src="assets/js/jquery.sticky.js"></script>
 	<script src="assets/js/smoothscroll.js"></script>
 	<script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/jquery.easypiechart.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.cbpQTRotator.js"></script>
+	<script src="assets/js/jquery.easypiechart.js"></script>
+	<script src="assets/js/waypoints.min.js"></script>
+	<script src="assets/js/jquery.cbpQTRotator.js"></script>
 	<script src="assets/js/custom.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+
+	<!-- Modules -->
+	<script src="assets/js/pajammery.js"></script>
+	<script src="assets/js/controllers/CarouselController.js"></script>
+	<script src="assets/js/controllers/ProductsController.js"></script>
 
 </body>
 </html>
